@@ -1,5 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 html {
+  box-sizing: border-box;
   height: 100%;
+  font-size: 62.5%;
+
+  --fs-h1: 2.5rem;
+  --fs-h2: 2.2rem;
+  --fs-h3: 1.8rem;
+  --fs-body: 1.6rem;
+
   --bg: #FCFCFC;
   --bg-panel: #EBEBEB;
   --color-headings: #0077FF;
@@ -16,20 +29,46 @@ html[data-theme='dark'] {
 
 body {
   background-color: var(--bg);
+  color: var(--color-text);
   font-family: Arial, Helvetica, sans-serif;
-}
-
-.container {
-  background-color: var(--bg-panel);
+  font-size: var(--fs-body);
 }
 
 h1 {
+  font-size: var(--fs-h1);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+}
+
+h1, h2, h3 {
   color: var(--color-headings);
 }
 
-p {
-  color: var(--color-text);
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1rem;
+  margin: 5rem;
 }
+
+.image-block {
+
+}
+
+.image-block img {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  object-fit: cover;
+  transition: transform 750ms cubic-bezier(0.5, 0, 0.5, 1), opacity 250ms linear;
+}
+
 
 /* Toggle buttom */
 input[type=checkbox] {
