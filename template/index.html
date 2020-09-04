@@ -8,37 +8,38 @@
     </head>
     <body>
 
-        <input type="checkbox" id="switch" name="theme" /><label
-                    for="switch"
-                    >Toggle</label
-                >
+        <div class="grid-container">
+            <header class="header">
+                <h1>Header</h1> 
+            </header>
+    
+            <aside class="navigation-drawer">
+                <h2>User</h2>
+                <input type="checkbox" id="switch" name="theme" />
+            <label for="switch">Toggle</label>
+            </aside>
+    
+            <main class="main">
+                <div class="gallery">
+                    <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
+                    <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
+                    <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
+                    <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
+                    <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
+                    <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
+                    <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
+                    <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
+                    <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
+                    <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
+                </div>
+            </main>
+    
+            <footer class="footer">
+                <p>Jorge Cáceres &copy;</p>
+            </footer>
+        </div>
 
-        <header>
-            <h1>Header</h1> 
-        </header>
-
-        <aside>
-            <h2>User</h2>
-        </aside>
-
-        <main>
-            <div class="gallery">
-                <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
-                <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
-                <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
-                <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
-                <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
-                <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
-                <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
-                <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
-                <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
-                <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
-            </div>
-        </main>
-
-        <footer>
-            <p>Jorge Cáceres &copy;</p>
-        </footer>
+        
 
         <script>
             var checkbox = document.querySelector('input[name=theme]');
