@@ -215,6 +215,11 @@ h3 {
   opacity: 1;
 }
 
+.img-description p a {
+  color: #fcfcfc;
+  text-decoration: none;
+}
+
 .img-description p {
   margin: 1rem;
 }
