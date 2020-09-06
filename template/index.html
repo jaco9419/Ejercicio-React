@@ -13,22 +13,33 @@
                 <h1>Imágenes para ti</h1> 
             </header>
             
-            <div class="navigation-drawer-wrapper">
-                <aside class="navigation-drawer">
-                <img src="./img/User.svg" alt="user image">
-                <h2>User</h2>
-                <input type="checkbox" id="switch" name="theme" />
-                
-            <label for="switch">Toggle</label>
-            <div class="stripe"></div>
+            <aside class="navigation-drawer-wrapper">
+                <div class="navigation-drawer">
+                    <div class="user">
+                        <img src="./img/User.svg" alt="user image">
+                        <h2>User</h2>
+                        <p>Nocturno: <span id="modo-nocturno">NO</span></p>
+                        <input type="checkbox" id="switch" name="theme" class="toggle"/>
+                        <label for="switch">Toggle</label>
+                    </div>
+                    <button class="salir">Cerrar sesión</button>
+                    <div id="menu" class="menu">Menú</div>
+                </div>
             </aside>
-            </div>
             
     
             <main class="main">
                 <div class="gallery">
-                    <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
-                    <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
+                    <div class="image-block">
+                        <a href=""></a>
+                        <img src="https://picsum.photos/id/0/5616/3744" alt="image 1">
+                        <div class="img-description">
+                            <p>5616 x 3744</p>
+                            <p>Alejandro Escamilla</p>
+                        </div>
+                        
+                    </div>
+
                     <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
                     <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
                     <div class="image-block"><a href=""></a><img src="https://picsum.photos/id/0/5616/3744" alt="image 1"></div>
@@ -48,18 +59,29 @@
         
 
         <script>
-            var checkbox = document.querySelector('input[name=theme]');
+
+            const menu = document.querySelector('.menu');
+            const sideBar = document.querySelector('.navigation-drawer');
+
+            menu.addEventListener('click', () => {
+                sideBar.classList.toggle('nav-open');
+            })
+
+            const checkbox = document.querySelector('input[name=theme]');
+            const nocturno = document.querySelector('#modo-nocturno');
 
             checkbox.addEventListener('change', function () {
                 if (this.checked) {
                     trans();
                     document.documentElement.setAttribute('data-theme', 'dark');
+                    nocturno.innerHTML = 'SI';
                 } else {
                     trans();
                     document.documentElement.setAttribute(
                         'data-theme',
                         'light'
                     );
+                    nocturno.innerHTML = 'NO';
                 }
             });
 
