@@ -1,20 +1,20 @@
 import React from 'react';
-import userImg from './img/User.svg'
-import { render } from '@testing-library/react';
+import userImg from './img/User.svg';
+import data from './data';
 
 class App extends React.Component {
-  state = {
-    loading: true,
-    images: null
-  };
+  // state = {
+  //   loading: true,
+  //   images: null
+  // };
 
-  async componentDidMount() {
-    const url = "https://picsum.photos/v2/list?page=1&limit=6";
-    const response = await fetch(url);
-    const data = await response.json();
-    this.setState({ images: data, loading: false });
-    console.log(this.state.images);
-  }
+  // async componentDidMount() {
+  //   const url = "https://picsum.photos/v2/list?page=1&limit=6";
+  //   const response = await fetch(url);
+  //   const data = await response.json();
+  //   this.setState({ images: data, loading: false });
+  //   console.log(this.state.images); 
+  // }
 
 
   render() { 
@@ -26,8 +26,10 @@ class App extends React.Component {
 
   // Handle modal
 
-  function openModal () {
+  function openModal (e) {
     document.querySelector('.modal-bg').classList.add('modal-active');
+    document.querySelector('#modal-image').src = e.target.src;
+    console.log(e.target.src);
   }
 
   function closeModal () {
@@ -48,14 +50,6 @@ class App extends React.Component {
            document.getElementById('modo-nocturno').innerHTML = 'NO';
        }
    };
-
-   if (this.state.loading) {
-    return <div>loading...</div>;
-  }
-
-  if (!this.state.images) {
-    return <div>didn't get an image</div>;
-  }
 
 
   return (
@@ -83,13 +77,12 @@ class App extends React.Component {
                 <div className="gallery">
 
                         {
-                          this.state.images.map(image => 
+                          data.images.map(image => 
                             <div className="image-block" id="image-block" key={image.id}>
-                          <img src={image.download_url} alt="1" />
-                          <div className="img-description" id="image-description" onClick={openModal}>
-                              <p>{image.width} x {image.height}</p>
+                          <img src={image.download_url} alt="1" onClick={openModal}/>
+                          <div className="img-description" id="image-description" onClick={openModal} >
                               <p>{image.author} 
-                                  <a href={image.url} target="_blank">
+                                  <a href={image.url} >
                                       <i className="fab fa-unsplash"></i>
                                   </a>
                               </p>
@@ -100,14 +93,14 @@ class App extends React.Component {
    
                 </div>
 
-                {
-                  this.state.images.map(image =>
+                
                     <div className="modal-bg">
                         <div className="modal-image-block">
-                            <img src={image.download_url} alt="1" />
+                            <div className="image-container"><img src="" alt="1" id="modal-image"/></div>
+                            
                             <div className="modal-img-description">
                                 <p>Autor: Alejandro Escamilla | Cuenta Unplash:
-                                    <a href="https://unsplash.com/photos/yC-Yzbqy7PY" target="_blank">
+                                    <a href="https://unsplash.com/photos/yC-Yzbqy7PY" >
                                         <i className="fab fa-unsplash"></i>
                                     </a>
                                 </p>
@@ -117,8 +110,6 @@ class App extends React.Component {
                             <span className="modal-close" onClick={closeModal}>x</span>
                         </div>
                 </div>
-                    )
-                }
 
                 
 
