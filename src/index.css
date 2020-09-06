@@ -215,9 +215,10 @@ h3 {
   justify-content: flex-end;
   transition: .3s;
   opacity: 0;
+  cursor: pointer;
 }
 
-.image-block img:hover ~ .img-description{
+.image-block img:hover ~ .img-description, .img-description:hover{
   opacity: 1;
 }
 
