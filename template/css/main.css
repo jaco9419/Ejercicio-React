@@ -17,8 +17,9 @@ html {
   --bs: 10px 10px 46px -13px rgba(0,0,0,0.75);
 
   --bg: #fcfcfc;
-  --bg-panel: #303144;
+  --bg-panel: #4e4e4e;
   --bg-menu:#0e0e0e;
+  --stripe: url("../img/stripe-light.svg");
   --color-menu:#dddddd;
   --color-headings: #61abff;
   --color-text: #333333;
@@ -29,7 +30,9 @@ html {
 
 html[data-theme='dark'] {
   --bg: #0c1524;
+  --bg-panel: #303144;
   --bg-menu:#adafcaff;
+  --stripe: url("../img/stripe-dark.svg");
   --color-menu:#0e0e0e;
   --color-headings: #3694FF;
   --color-text: #dddddd;
@@ -82,7 +85,7 @@ h3 {
 
 .navigation-drawer {
   width: 15rem;
-  background: var(--bg) url("../img/stripe.svg");
+  background: var(--bg) var(--stripe);
   background-repeat: no-repeat;
   background-position: bottom;
   height: 100%;
