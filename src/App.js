@@ -1,7 +1,23 @@
 import React from 'react';
 import userImg from './img/User.svg'
+import { render } from '@testing-library/react';
 
-function App() {
+class App extends React.Component {
+  state = {
+    loading: true,
+    images: null
+  };
+
+  async componentDidMount() {
+    const url = "https://picsum.photos/v2/list?page=1&limit=6";
+    const response = await fetch(url);
+    const data = await response.json();
+    this.setState({ images: data, loading: false });
+    console.log(this.state.images);
+  }
+
+
+  render() { 
 
   // Handle Menu
   const openMenu = () => {
@@ -19,7 +35,7 @@ function App() {
   }
 
    // Handle Dark mode
-   
+
    function toggleDarkMode () {
        if (document.querySelector('input[name=theme]').checked) {
            document.documentElement.setAttribute('data-theme', 'dark');
@@ -33,7 +49,14 @@ function App() {
        }
    };
 
-            
+   if (this.state.loading) {
+    return <div>loading...</div>;
+  }
+
+  if (!this.state.images) {
+    return <div>didn't get an image</div>;
+  }
+
 
   return (
     <div className="grid-container">
@@ -48,7 +71,7 @@ function App() {
                         <h2>User</h2>
                         <p>Nocturno: <span id="modo-nocturno">NO</span></p>
                         <input type="checkbox" id="switch" name="theme" onChange={toggleDarkMode}/>
-                        <label for="switch">Toggle</label>
+                        <label htmlFor="switch">Toggle</label>
                     </div>
                     <button className="salir">Cerrar sesión</button>
                     <div id="menu" className="menu" onClick={openMenu}>Menú</div>
@@ -59,28 +82,29 @@ function App() {
             <main className="main">
                 <div className="gallery">
 
-                    <div className="image-block" id="image-block">
-                        <a href="#"></a>
-                        <img src="https://picsum.photos/id/0/5616/3744" alt="1" />
-                        <div className="img-description" id="image-description" onClick={openModal}>
-                            <p>5616 x 3744</p>
-                            <p>Alejandro Escamilla 
-                                <a href="https://unsplash.com/photos/yC-Yzbqy7PY" target="_blank">
-                                    <i className="fab fa-unsplash"></i>
-                                </a>
-                            </p>
+                        {
+                          this.state.images.map(image => 
+                            <div className="image-block" id="image-block" key={image.id}>
+                          <img src={image.download_url} alt="1" />
+                          <div className="img-description" id="image-description" onClick={openModal}>
+                              <p>{image.width} x {image.height}</p>
+                              <p>{image.author} 
+                                  <a href={image.url} target="_blank">
+                                      <i className="fab fa-unsplash"></i>
+                                  </a>
+                              </p>
+                          </div>
                         </div>
-                    </div>
-
-                  
-
-                    
+                            )
+                        }
+   
                 </div>
 
-                <div className="modal-bg">
+                {
+                  this.state.images.map(image =>
+                    <div className="modal-bg">
                         <div className="modal-image-block">
-                            <a href="#"></a>
-                            <img src="https://picsum.photos/id/0/5616/3744" alt="1" />
+                            <img src={image.download_url} alt="1" />
                             <div className="modal-img-description">
                                 <p>Autor: Alejandro Escamilla | Cuenta Unplash:
                                     <a href="https://unsplash.com/photos/yC-Yzbqy7PY" target="_blank">
@@ -90,9 +114,13 @@ function App() {
                                 <p>Ancho: 5616</p>
                                 <p>Alto: 3744</p>
                             </div>
-                            <span className="modal-close" onClick={closeModal}>X</span>
+                            <span className="modal-close" onClick={closeModal}>x</span>
                         </div>
                 </div>
+                    )
+                }
+
+                
 
                 
 
@@ -103,6 +131,7 @@ function App() {
             </footer>
         </div>
   );
+                  }
 }
 
 export default App;
