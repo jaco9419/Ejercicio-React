@@ -270,7 +270,7 @@ h3 {
 
 .modal-image-block img {
   max-height: 67vh;
-  width: auto;
+  max-width: 90vw;
   object-fit: cover;
   box-shadow: var(--bs);
   margin: 0 auto 2rem auto;
@@ -294,13 +294,13 @@ h3 {
 
 @media (max-width: 700px) {
   .modal-image-block {
-    width: 85vw;
-    padding: 1rem;
+    width: 100vw;
+    padding: 3rem 1rem;
   }
 
   .modal-close {
-    top: 20px;
-    right: 20px;
+    top: 40px;
+    right: 40px;
   }
 
   .menu {
@@ -314,10 +314,7 @@ h3 {
     margin: 1rem;
   }
 
-  .modal-image-block {
-    width: 100vw;
-    padding: .5rem;
-  }
+ 
 
   .modal-img-description {
     margin: 2rem;

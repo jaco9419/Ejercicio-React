@@ -56,9 +56,12 @@ class Gallery extends React.Component {
         this.setState({
             imagesLimit: this.state.imagesLimit + 6,
         });
-        if (this.state.imagesLimit > 6) {
+        setTimeout(() => {
             this.componentDidMount();
-        }
+            console.log(this.state.imagesLimit);
+        }, 500)
+            
+        
         console.log(this.state.imagesLimit);
     };
 
@@ -88,11 +91,11 @@ class Gallery extends React.Component {
         return (
             <main className="main">
                 <div className="gallery">
-                    {images.map((image) => (
+                    {images.map((image, i) => (
                         <div
                             className="image-block"
                             id="image-block"
-                            key={image.id}
+                            key={i}
                         >
                             <img
                                 src={image.download_url}
@@ -107,7 +110,7 @@ class Gallery extends React.Component {
                     ))}
                 </div>
 
-                <div className="modal-bg">
+                <div className="modal-bg" onClick={this.closeModal}>
                     <div className="modal-image-block">
                         <div className="image-container">
                             <img
