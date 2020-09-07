@@ -123,7 +123,10 @@ class Gallery extends React.Component {
                         <div className="modal-img-description">
                             <p>
                                 Autor: {currentImage.author} |{' '}
-                                <a href={currentImage.url}>Unplash</a>
+                                <a href={currentImage.url} 
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >Unplash</a>
                             </p>
                             <p>Ancho: {currentImage.width}</p>
                             <p>Alto: {currentImage.height}</p>

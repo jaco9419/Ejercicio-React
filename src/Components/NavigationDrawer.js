@@ -1,5 +1,6 @@
 import React from 'react';
 import userImg from '../img/User.svg';
+import { Link } from 'react-router-dom';
 
 function NavigationDrawer () {
 
@@ -40,7 +41,7 @@ function NavigationDrawer () {
                         />
                         <label className="label" htmlFor="switch">Toggle</label>
                     </div>
-                    <button className="salir">Cerrar sesión</button>
+                    <Link className="salir" to={"/"}>Cerrar sesión</Link>
                     <div id="menu" className="menu" onClick={openMenu}>
                         Menú
                     </div>
