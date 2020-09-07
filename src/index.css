@@ -215,7 +215,6 @@ h3 {
   justify-content: flex-end;
   transition: .3s;
   opacity: 0;
-  cursor: pointer;
 }
 
 .image-block img:hover ~ .img-description, .img-description:hover{
@@ -279,7 +278,6 @@ h3 {
 
 .modal-img-description p a {
   color: var(--color-text);
-  text-decoration: none;
 }
 
 .modal-img-description p {
@@ -326,6 +324,33 @@ h3 {
   }
 }
 
+.more-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.more {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border: 2px var(--bg-menu) solid;
+  color: var(--bg-menu);
+  border-radius: 50%;
+  text-align: center;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.more:hover {
+  background: var(--bg-menu);
+  color: var(--bg);
+}
+
+/* Footer */
+
 
 .footer {
   width: 100%;
@@ -334,6 +359,13 @@ h3 {
   justify-content: center;
   align-items: center;
   grid-area: footer;
+}
+
+/* Loading */
+
+.loading {
+  text-align: center;
+  margin-top: 2rem;
 }
 
 

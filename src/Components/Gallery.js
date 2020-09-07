@@ -7,15 +7,15 @@ class Gallery extends React.Component {
             isLoading: false,
             error: null,
             images: [],
-            currentImage: 'https://picsum.photos/id/1003/1181/1772'
+            currentImage: '',
+            imagesLimit: 6
         };
-        this.openModal = this.openModal.bind(this);
     }
     
 
     async componentDidMount() {
         this.setState({ isLoading: true })
-        const url = 'https://picsum.photos/v2/list?page=1&limit=6';
+        const url = 'https://picsum.photos/v2/list?limit=' + this.state.imagesLimit;
          fetch(url)
          .then(res => {
              if (res.ok) {
@@ -34,9 +34,8 @@ class Gallery extends React.Component {
 
     // Handle modal
 
-    openModal(e) {
+    openModal = e => {
         document.querySelector('.modal-bg').classList.add('modal-active');
-        //document.querySelector('#modal-image').src = e.target.src;
         const image = this.state.images.find(image => e.target.id === image.id
         )
         this.setState({
@@ -50,7 +49,17 @@ class Gallery extends React.Component {
             .classList.remove('modal-active');
     }
 
-    //
+    // Handle Images Limit
+
+    handleImagesLimit = () => {
+        this.setState({
+            imagesLimit: this.state.imagesLimit + 6
+        })
+        if(this.state.imagesLimit > 6) {
+            this.componentDidMount();
+        }
+        console.log(this.state.imagesLimit);
+    }
 
     render() {
 
@@ -61,7 +70,7 @@ class Gallery extends React.Component {
         }
 
         if (isLoading) {
-            return <p>Loading...</p>
+            return <p className="loading">Loading...</p>
         }
 
         return (
@@ -82,14 +91,9 @@ class Gallery extends React.Component {
                                     />
                                     <div
                                         className="img-description"
-                                        id="image-description"
-                                        onClick={this.openModal}
                                     >
                                         <p>
                                             {image.author}
-                                            <a href={image.url}>
-                                                <i className="fab fa-unsplash"></i>
-                                            </a>
                                         </p>
                                     </div>
                                 </div>
@@ -99,19 +103,17 @@ class Gallery extends React.Component {
                         <div className="modal-bg">
                             <div className="modal-image-block">
                                 <div className="image-container">
-                                    <img src={currentImage.download_url} alt="1" id="modal-image" />
+                                    <img src={ currentImage.download_url } alt="1" id="modal-image" />
                                 </div>
 
                                 <div className="modal-img-description">
                                     <p>
-                                        Autor: Alejandro Escamilla | Cuenta
-                                        Unplash:
-                                        <a href="https://unsplash.com/photos/yC-Yzbqy7PY">
-                                            <i className="fab fa-unsplash"></i>
+                                        Autor: { currentImage.author } | <a href={ currentImage.url }>
+                                        Unplash
                                         </a>
                                     </p>
-                                    <p>Ancho: 5616</p>
-                                    <p>Alto: 3744</p>
+                                    <p>Ancho: { currentImage.width }</p>
+                                    <p>Alto: { currentImage.height }</p>
                                 </div>
                                 <span
                                     className="modal-close"
@@ -121,6 +123,11 @@ class Gallery extends React.Component {
                                 </span>
                             </div>
                         </div>
+                        <div className="more-container">
+                        <div className="more" onClick={this.handleImagesLimit}>+</div>
+                        
+                        </div>
+                        
                     </main>
 
         

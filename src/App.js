@@ -1,8 +1,8 @@
 import React from 'react';
 import userImg from './img/User.svg';
-//import data from './data';
 import { BrowserRouter } from 'react-router-dom';
 import Gallery from './Components/Gallery';
+
 
 class App extends React.Component {
 
