@@ -66,11 +66,23 @@ class Gallery extends React.Component {
         const { error, isLoading, images, currentImage } = this.state;
 
         if (error) {
-            return <p>{error.message}</p>;
+            return (
+                <main className="main">
+                    <div className="gallery">
+                        <p>{error.message}</p>;
+                    </div>
+                </main>
+            );
         }
 
         if (isLoading) {
-            return <p className="loading">Loading...</p>;
+            return (
+                <main className="main">
+                    <div className="gallery">
+                        <p className="loading">Loading...</p>;
+                    </div>
+                </main>
+            );
         }
 
         return (
@@ -84,7 +96,7 @@ class Gallery extends React.Component {
                         >
                             <img
                                 src={image.download_url}
-                                alt="1"
+                                alt="gallery-item"
                                 onClick={this.openModal}
                                 id={image.id}
                             />

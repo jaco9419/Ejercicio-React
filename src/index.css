@@ -368,6 +368,85 @@ h3 {
   margin-top: 2rem;
 }
 
+/* Signin */
+
+.signin-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signin-box {
+  min-width: 40rem;
+  height: 50rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: var(--bs);
+}
+
+@media (max-width: 420px) {
+  .signin-box {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+.signin-title {
+  width: 100%;
+  height: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  color: var(--color-menu);
+  background: var(--bg-menu);
+  padding-bottom: 6rem;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  box-shadow: var(--bs);
+}
+
+.form {
+  width: 70%;
+  height: 50%;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form label, .form input{
+  display: block;
+  margin: .5rem 0;
+  width: 90%;
+}
+
+.form input{
+  padding: .7rem;
+}
+
+.form .submit {
+  margin-top: 40px;
+  background: var(--color-headings);
+  border: none;
+  width: 50%;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: var(--bs);
+  transition: .3s;
+  cursor: pointer;
+}
+
+.form .submit:hover {
+  opacity: 0.9;
+}
 
 /* Toggle buttom */
 input[type=checkbox] {
@@ -376,7 +455,7 @@ input[type=checkbox] {
   visibility: hidden;
 }
 
-label {
+.label {
   cursor: pointer;
   text-indent: -9999px;
   width: 52px;
@@ -387,7 +466,7 @@ label {
   position: relative;
 }
 
-label:after {
+.label:after {
   content: '';
   position: absolute;
   top: 3px;
@@ -400,18 +479,18 @@ label:after {
   transition: 0.3s;
 }
 
-input:checked + label {
+input:checked + .label {
   background: var(--color-dark);
 }
 
-input:checked + label:after {
+input:checked + .label:after {
   left: calc(100% - 5px);
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
   background-color: white;
 }
 
-label:active:after {
+.label:active:after {
   width: 45px;
   background-color: white;
 }

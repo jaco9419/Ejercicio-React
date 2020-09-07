@@ -38,7 +38,7 @@ function NavigationDrawer () {
                             name="theme"
                             onChange={toggleDarkMode}
                         />
-                        <label htmlFor="switch">Toggle</label>
+                        <label className="label" htmlFor="switch">Toggle</label>
                     </div>
                     <button className="salir">Cerrar sesión</button>
                     <div id="menu" className="menu" onClick={openMenu}>
