@@ -16,7 +16,7 @@ class Gallery extends React.Component {
     async componentDidMount() {
         this.setState({ isLoading: true });
         const url =
-            'https://picsum.photos/v2/list?limit=' + this.state.imagesLimit;
+            `https://picsum.photos/v2/list?page=${Math.floor(Math.random() * 21)}&limit=${this.state.imagesLimit}`;
         fetch(url)
             .then((res) => {
                 if (res.ok) {
@@ -61,15 +61,11 @@ class Gallery extends React.Component {
         });
         setTimeout(() => {
             this.componentDidMount();
-            console.log(this.state.imagesLimit);
         }, 500)
-            
-        
-        console.log(this.state.imagesLimit);
     };
 
     render() {
-        const { error, isLoading, images, currentImage } = this.state;
+        const { error, isLoading, images, currentImage, active } = this.state;
 
         if (error) {
             return (
@@ -113,7 +109,7 @@ class Gallery extends React.Component {
                     ))}
                 </div>
 
-                <div className={this.state.active ? "modal-bg modal-active" : "modal-bg"} onClick={this.closeModal}>
+                <div className={active ? "modal-bg modal-active" : "modal-bg"} onClick={this.closeModal}>
                     <div className="modal-image-block">
                         <div className="image-container">
                             <img
