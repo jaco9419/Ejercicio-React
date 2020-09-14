@@ -9,6 +9,7 @@ class Gallery extends React.Component {
             images: [],
             currentImage: '',
             imagesLimit: 6,
+            active: false,
         };
     }
 
@@ -37,17 +38,19 @@ class Gallery extends React.Component {
     // Handle modal
 
     openModal = (e) => {
-        document.querySelector('.modal-bg').classList.add('modal-active');
         const image = this.state.images.find(
             (image) => e.target.id === image.id
         );
         this.setState({
             currentImage: image,
+            active: true,
         });
     };
 
-    closeModal() {
-        document.querySelector('.modal-bg').classList.remove('modal-active');
+    closeModal = () => {
+        this.setState({
+            active: false,
+        });
     }
 
     // Handle Images Limit
@@ -110,7 +113,7 @@ class Gallery extends React.Component {
                     ))}
                 </div>
 
-                <div className="modal-bg" onClick={this.closeModal}>
+                <div className={this.state.active ? "modal-bg modal-active" : "modal-bg"} onClick={this.closeModal}>
                     <div className="modal-image-block">
                         <div className="image-container">
                             <img
